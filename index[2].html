@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surbhi Cafe & Restaurant | Ultra-Premium Fine Dining</title>
+<meta name="description" content="Experience world-class fine dining at Surbhi Cafe & Restaurant. Exquisite cuisine, luxurious ambiance, and unforgettable culinary journeys crafted by master chefs.">
+<meta name="keywords" content="fine dining, luxury restaurant, premium cafe, gourmet food, Surbhi Restaurant">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* === CSS VARIABLES & RESET === */
+:root {
+  --black: #0A0A0A;
+  --black-light: #111111;
+  --black-card: #141414;
+  --gold: #D4AF37;
+  --gold-light: #E8C84A;
+  --champagne: #F5E6B3;
+  --ivory: #FAF9F6;
+  --ivory-dim: rgba(250,249,246,0.7);
+  --glass-bg: rgba(20,20,20,0.6);
+  --glass-border: rgba(212,175,55,0.15);
+  --glass-shadow: rgba(0,0,0,0.4);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Garamond, serif;
+  --font-accent: 'Lora', Georgia, serif;
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--black);
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--ivory);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === PRELOADER === */
+.preloader {
+  position: fixed; inset:0; z-index:10000;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 0.8s var(--ease-luxury), visibility 0.8s;
+}
+.preloader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+.preloader-logo {
+  font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  animation: preloaderPulse 1.5s ease-in-out infinite;
+}
+.preloader-line {
+  width: 120px; height: 1px; background: rgba(212,175,55,0.2);
+  margin-top: 24px; position: relative; overflow: hidden;
+}
+.preloader-line::after {
+  content:''; position:absolute; left:-100%; top:0; width:100%; height:100%;
+  background: var(--gold);
+  animation: preloaderSlide 1.2s ease-in-out infinite;
+}
+@keyframes preloaderPulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+@keyframes preloaderSlide { 0%{left:-100%} 100%{left:100%} }
+
+/* === NAVIGATION === */
+.nav {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  padding: 20px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.5s var(--ease-luxury);
+}
+.nav.scrolled {
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  padding: 14px 60px;
+  border-bottom: 1px solid var(--glass-border);
+}
+.nav-logo {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.12em; text-decoration: none;
+  text-transform: uppercase;
+}
+.nav-logo span { font-weight: 400; color: var(--ivory); font-size: 0.7em; display:block; letter-spacing:0.3em; margin-top:-2px; }
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a {
+  font-family: var(--font-body); font-size: 1rem; font-weight: 500;
+  color: var(--ivory-dim); text-decoration:none; letter-spacing:0.08em;
+  text-transform: uppercase; position:relative;
+  transition: color 0.3s var(--ease-luxury);
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px;
+  background: var(--gold); transition: width 0.4s var(--ease-luxury);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width:100%; }
+.nav-reserve-btn {
+  font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+  color: var(--black); background: var(--gold);
+  padding: 10px 28px; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border: 1px solid var(--gold);
+  transition: all 0.4s var(--ease-luxury);
+}
+.nav-reserve-btn:hover {
+  background: transparent; color: var(--gold);
+}
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 8px;
+}
+.nav-hamburger span {
+  width: 24px; height: 1.5px; background: var(--gold);
+  transition: all 0.3s var(--ease-luxury);
+}
+
+/* === SECTION COMMONS === */
+.section-tag {
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.35em; text-transform: uppercase;
+  margin-bottom: 16px; display: inline-block;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700; color: var(--ivory); line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc {
+  font-family: var(--font-body); font-size: 1.15rem; font-weight: 400;
+  color: var(--ivory-dim); max-width: 560px; line-height: 1.7;
+}
+.gold-divider {
+  width: 60px; height: 1px; background: var(--gold); margin: 24px 0;
+}
+.reveal { opacity:0; transform: translateY(40px); transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury); }
+.reveal.visible { opacity:1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+
+/* === HERO SECTION === */
+.hero {
+  position: relative; min-height: 100vh; display: flex;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,55,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(212,175,55,0.03) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.95) 100%);
+  z-index: 2;
+}
+.hero-bg-image {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80') center/cover no-repeat;
+  animation: heroZoom 25s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.hero-particles {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+}
+.particle {
+  position: absolute; width: 2px; height: 2px;
+  background: var(--gold); border-radius: 50%;
+  opacity: 0; animation: particleFloat linear infinite;
+}
+@keyframes particleFloat {
+  0% { opacity:0; transform: translateY(0) scale(0); }
+  15% { opacity:0.6; }
+  85% { opacity:0.3; }
+  100% { opacity:0; transform: translateY(-100vh) scale(1); }
+}
+.hero-content {
+  position: relative; z-index: 4;
+  text-align: center; padding: 0 24px;
+  max-width: 900px;
+}
+.hero-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 1.05; color: var(--ivory);
+  margin-bottom: 8px;
+  opacity: 0; animation: heroFadeUp 1s var(--ease-luxury) 0.7s forwards;
+}
+.hero-title em {
+  font-style: italic; color: var(--gold);
+  text-shadow: 0 0 60px rgba(212,175,55,0.2);
+}
+.hero-subtitle {
+  font-family: var(--font-body); font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300; color: var(--ivory-dim);
+  max-width: 600px; margin: 24px auto 0;
+  line-height: 1.7; letter-spacing: 0.02em;
+  opacity: 0; animation: heroFadeUp 1s var(--ease-luxury) 0.9s forwards;
+}
+.hero-cta-group {
+  display: flex; gap: 20px; justify-content: center;
+  margin-top: 48px; flex-wrap: wrap;
+  opacity: 0; animation: heroFadeUp 1s var(--ease-luxury) 1.1s forwards;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 40px; background: var(--gold); color: var(--black);
+  font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--gold);
+  transition: all 0.4s var(--ease-luxury);
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease-luxury);
+}
+.btn-primary:hover::before { transform: translateX(100%); }
+.btn-primary:hover { background: var(--gold-light); box-shadow: 0 8px 40px rgba(212,175,55,0.25); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 40px; background: transparent; color: var(--ivory);
+  font-family: var(--font-body); font-size: 1rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid rgba(250,249,246,0.2);
+  transition: all 0.4s var(--ease-luxury);
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-scroll-indicator {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: heroFadeUp 1s var(--ease-luxury) 1.5s forwards;
+}
+.hero-scroll-indicator span {
+  font-family: var(--font-body); font-size: 0.7rem;
+  color: rgba(250,249,246,0.4); letter-spacing: 0.3em; text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 40px; background: rgba(212,175,55,0.2);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
+  background: var(--gold);
+  animation: scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown { 0%{top:-100%} 50%{top:100%} 100%{top:100%} }
+@keyframes heroFadeUp {
+  from { opacity:0; transform: translateY(30px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* === CHEF'S SPECIAL === */
+.chef-specials {
+  padding: 140px 60px; position: relative;
+  background: var(--black);
+}
+.chef-specials::before {
+  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:1px; height:80px; background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.chef-header { text-align:center; margin-bottom:80px; }
+.chef-header .section-desc { margin: 0 auto; }
+.chef-header .gold-divider { margin: 24px auto; }
+.menu-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px; max-width: 1200px; margin: 0 auto;
+}
+.menu-card {
+  position: relative; border-radius: 2px; overflow: hidden;
+  background: var(--black-card);
+  border: 1px solid rgba(212,175,55,0.08);
+  transition: all 0.5s var(--ease-luxury);
+  cursor: pointer;
+}
+.menu-card:hover {
+  border-color: rgba(212,175,55,0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,175,55,0.05);
+}
+.menu-card-image {
+  width: 100%; height: 280px; object-fit: cover;
+  transition: transform 0.7s var(--ease-luxury);
+}
+.menu-card:hover .menu-card-image { transform: scale(1.06); }
+.menu-card-image-wrap {
+  overflow: hidden; position: relative;
+}
+.menu-card-image-wrap::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:50%;
+  background: linear-gradient(to top, var(--black-card), transparent);
+}
+.menu-card-badge {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  padding: 6px 14px; background: var(--gold); color: var(--black);
+  font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.menu-card-body { padding: 28px 28px 32px; }
+.menu-card-category {
+  font-family: var(--font-body); font-size: 0.75rem; font-weight: 500;
+  color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.menu-card-name {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+  color: var(--ivory); margin-bottom: 10px; line-height: 1.3;
+}
+.menu-card-desc {
+  font-family: var(--font-body); font-size: 1rem; font-weight: 400;
+  color: var(--ivory-dim); line-height: 1.6;
+}
+
+/* === FINE DINING EXPERIENCE === */
+.experience {
+  padding: 140px 60px; position: relative;
+  background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 50%, var(--black) 100%);
+}
+.experience-layout {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.experience-visual {
+  position: relative;
+}
+.experience-img-main {
+  width: 100%; height: 520px; object-fit: cover;
+  border: 1px solid rgba(212,175,55,0.1);
+}
+.experience-img-float {
+  position: absolute; bottom: -40px; right: -40px;
+  width: 220px; height: 220px; object-fit: cover;
+  border: 3px solid var(--gold); box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.experience-stats {
+  position: absolute; top: -20px; left: -30px;
+  background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 24px 32px; text-align: center;
+}
+.experience-stats .stat-number {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.experience-stats .stat-label {
+  font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+  color: var(--ivory-dim); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-top: 6px;
+}
+.experience-text .section-desc { margin-bottom: 40px; }
+.experience-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+.exp-feature {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.exp-feature-icon {
+  width: 48px; height: 48px; min-width: 48px;
+  border: 1px solid rgba(212,175,55,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 1.2rem;
+  background: rgba(212,175,55,0.03);
+}
+.exp-feature h4 {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  color: var(--ivory); margin-bottom: 4px;
+}
+.exp-feature p {
+  font-family: var(--font-body); font-size: 0.9rem; font-weight: 400;
+  color: var(--ivory-dim); line-height: 1.5;
+}
+
+/* === GALLERY === */
+.gallery {
+  padding: 140px 60px; background: var(--black);
+  position: relative;
+}
+.gallery-header { text-align: center; margin-bottom: 80px; }
+.gallery-header .gold-divider { margin: 24px auto; }
+.gallery-header .section-desc { margin: 0 auto; }
+.gallery-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 280px);
+  gap: 16px;
+}
+.gallery-item {
+  position: relative; overflow: hidden; cursor: pointer;
+  border: 1px solid rgba(212,175,55,0.05);
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s var(--ease-luxury);
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s var(--ease-luxury);
+  display: flex; align-items: flex-end; padding: 24px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 500;
+  color: var(--ivory); letter-spacing: 0.05em;
+}
+.gallery-overlay .gallery-zoom {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.7);
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center;
+  color: var(--gold); opacity: 0;
+  transition: all 0.4s var(--ease-luxury);
+}
+.gallery-item:hover .gallery-zoom { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+/* === REVIEWS === */
+.reviews {
+  padding: 140px 60px; position: relative;
+  background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+}
+.reviews-header { text-align: center; margin-bottom: 80px; }
+.reviews-header .gold-divider { margin: 24px auto; }
+.reviews-header .section-desc { margin: 0 auto; }
+.reviews-track {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+.review-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 40px 32px; position: relative;
+  transition: all 0.4s var(--ease-luxury);
+}
+.review-card:hover {
+  border-color: rgba(212,175,55,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.review-quote {
+  font-family: var(--font-display); font-size: 3rem;
+  color: var(--gold); opacity: 0.3; line-height: 1;
+  position: absolute; top: 20px; right: 24px;
+}
+.review-stars {
+  display: flex; gap: 3px; margin-bottom: 20px;
+}
+.review-stars svg { width: 16px; height: 16px; fill: var(--gold); }
+.review-text {
+  font-family: var(--font-body); font-size: 1.1rem; font-weight: 400;
+  color: var(--ivory-dim); line-height: 1.7; font-style: italic;
+  margin-bottom: 28px;
+}
+.review-author {
+  display: flex; align-items: center; gap: 14px;
+}
+.review-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  color: var(--gold); background: rgba(212,175,55,0.08);
+}
+.review-author-info h5 {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  color: var(--ivory);
+}
+.review-author-info span {
+  font-family: var(--font-body); font-size: 0.8rem; font-weight: 400;
+  color: var(--gold); letter-spacing: 0.1em;
+}
+
+/* === RESERVATION === */
+.reservation {
+  padding: 140px 60px; position: relative;
+  background: var(--black);
+  overflow: hidden;
+}
+.reservation::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 50% 50% at 80% 20%, rgba(212,175,55,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(212,175,55,0.03) 0%, transparent 60%);
+}
+.reservation-layout {
+  max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.reservation-text .section-desc { margin-bottom: 32px; }
+.reservation-info-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid rgba(212,175,55,0.08);
+}
+.reservation-info-item:last-child { border-bottom: none; }
+.reservation-info-icon {
+  width: 40px; height: 40px; min-width: 40px;
+  border: 1px solid rgba(212,175,55,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 1rem;
+}
+.reservation-info-item p {
+  font-family: var(--font-body); font-size: 1rem; color: var(--ivory-dim);
+}
+.reservation-info-item strong {
+  color: var(--ivory); font-weight: 600;
+}
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 32px; padding: 16px 36px;
+  background: #25D366; color: #fff;
+  font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: none;
+  transition: all 0.4s var(--ease-luxury);
+}
+.whatsapp-btn:hover { background: #128C7E; box-shadow: 0 8px 32px rgba(37,211,102,0.2); }
+.whatsapp-btn svg { width: 20px; height: 20px; fill: currentColor; }
+.reservation-form {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  padding: 48px 40px;
+}
+.form-title {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+  color: var(--ivory); margin-bottom: 32px; text-align: center;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block; font-family: var(--font-body); font-size: 0.85rem;
+  font-weight: 500; color: var(--gold); letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 14px 16px;
+  background: rgba(250,249,246,0.03);
+  border: 1px solid rgba(212,175,55,0.15);
+  color: var(--ivory); font-family: var(--font-body);
+  font-size: 1rem; outline: none;
+  transition: border-color 0.3s var(--ease-luxury);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+}
+.form-group select { cursor: pointer; appearance: none; }
+.form-group select option { background: var(--black); color: var(--ivory); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-submit {
+  width: 100%; padding: 16px;
+  background: var(--gold); color: var(--black);
+  font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  border: 1px solid var(--gold); cursor: pointer;
+  transition: all 0.4s var(--ease-luxury);
+  margin-top: 8px;
+}
+.form-submit:hover {
+  background: transparent; color: var(--gold);
+}
+
+/* === CONTACT & FOOTER === */
+.contact {
+  padding: 100px 60px 0; position: relative;
+  background: var(--black-light);
+  border-top: 1px solid rgba(212,175,55,0.08);
+}
+.contact-layout {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px;
+  padding-bottom: 80px;
+}
+.contact-brand .nav-logo { font-size: 1.8rem; display: inline-block; margin-bottom: 20px; }
+.contact-brand p {
+  font-family: var(--font-body); font-size: 1rem; color: var(--ivory-dim);
+  line-height: 1.7; max-width: 300px; margin-bottom: 24px;
+}
+.contact-social {
+  display: flex; gap: 12px;
+}
+.contact-social a {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(212,175,55,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); text-decoration: none; font-size: 0.9rem;
+  transition: all 0.3s var(--ease-luxury);
+}
+.contact-social a:hover { background: var(--gold); color: var(--black); }
+.contact-col h4 {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 24px; letter-spacing: 0.05em;
+}
+.contact-col ul { list-style: none; }
+.contact-col ul li { margin-bottom: 12px; }
+.contact-col ul li a {
+  font-family: var(--font-body); font-size: 0.95rem; color: var(--ivory-dim);
+  text-decoration: none; transition: color 0.3s;
+}
+.contact-col ul li a:hover { color: var(--gold); }
+.contact-col p {
+  font-family: var(--font-body); font-size: 0.95rem; color: var(--ivory-dim);
+  line-height: 1.7;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(212,175,55,0.08);
+  padding: 24px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1320px; margin: 0 auto;
+}
+.footer-bottom p {
+  font-family: var(--font-body); font-size: 0.85rem; color: rgba(250,249,246,0.4);
+}
+.footer-bottom p a { color: var(--gold); text-decoration: none; }
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .experience-layout { grid-template-columns: 1fr; gap: 60px; }
+  .experience-img-float { display: none; }
+  .experience-stats { left: 20px; top: 20px; }
+  .reservation-layout { grid-template-columns: 1fr; gap: 60px; }
+  .contact-layout { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .reviews-track { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 240px); }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+}
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+  .nav-reserve-btn { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 32px;
+    opacity: 0; visibility: hidden;
+    transition: all 0.4s var(--ease-luxury);
+  }
+  .mobile-menu.active { opacity: 1; visibility: visible; }
+  .mobile-menu a {
+    font-family: var(--font-display); font-size: 1.8rem; font-weight: 500;
+    color: var(--ivory); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-close {
+    position: absolute; top: 20px; right: 24px;
+    background: none; border: none; color: var(--gold);
+    font-size: 2rem; cursor: pointer;
+  }
+  .chef-specials, .experience, .gallery, .reviews, .reservation { padding: 80px 24px; }
+  .contact { padding: 60px 24px 0; }
+  .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  .hero-title { font-size: clamp(2.4rem, 10vw, 4rem); }
+  .menu-grid { grid-template-columns: 1fr; }
+  .reviews-track { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .gallery-item:nth-child(1) { grid-column: span 1; }
+  .gallery-item { height: 260px; }
+  .experience-features { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  .reservation-form { padding: 32px 24px; }
+  .hero-cta-group { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">SURBHI</div>
+  <div class="preloader-line"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo">Surbhi<span>Cafe & Restaurant</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#specials">Specials</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#reservation" class="nav-reserve-btn">Reserve</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-bg-image"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Where Every<br>Dish Tells <em>a Story</em></h1>
+    <p class="hero-subtitle">An extraordinary culinary journey awaits at Surbhi Cafe & Restaurant — where tradition meets innovation in every exquisite plate.</p>
+    <div class="hero-cta-group">
+      <a href="#reservation" class="btn-primary">Reserve a Table
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#specials" class="btn-secondary">Explore Menu</a>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- CHEF'S SPECIAL -->
+<section class="chef-specials" id="specials">
+  <div class="chef-header reveal">
+    <span class="section-tag">Curated by Our Master Chef</span>
+    <h2 class="section-title">Chef's <em>Special</em> Collection</h2>
+    <div class="gold-divider"></div>
+    <p class="section-desc">Each dish is a masterpiece — crafted with the finest ingredients, artistic precision, and a passion that transforms dining into an art form.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card reveal reveal-delay-1">
+      <div class="menu-card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Royal Tandoori Platter" class="menu-card-image" loading="lazy">
+        <span class="menu-card-badge">Signature</span>
+      </div>
+      <div class="menu-card-body">
+        <span class="menu-card-category">Main Course</span>
+        <h3 class="menu-card-name">Royal Tandoori Platter</h3>
+        <p class="menu-card-desc">Premium cuts marinated 48 hours in aromatic spices, slow-cooked in our clay tandoor to smoky perfection.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-2">
+      <div class="menu-card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Saffron Biryani" class="menu-card-image" loading="lazy">
+        <span class="menu-card-badge">Chef's Pick</span>
+      </div>
+      <div class="menu-card-body">
+        <span class="menu-card-category">Signature Rice</span>
+        <h3 class="menu-card-name">Saffron Biryani Royale</h3>
+        <p class="menu-card-desc">Fragrant basmati layered with saffron-kissed tender meat, sealed and slow-cooked in the traditional dum style.</p>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-3">
+      <div class="menu-card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80" alt="Golden Dessert" class="menu-card-image" loading="lazy">
+        <span class="menu-card-badge">Exclusive</span>
+      </div>
+      <div class="menu-card-body">
+        <span class="menu-card-category">Dessert</span>
+        <h3 class="menu-card-name">Golden Gulab Reimagined</h3>
+        <p class="menu-card-desc">A luxurious twist on the classic — 24-karat edible gold, rose-infused syrup, and pistachio cream on saffron pastry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINE DINING EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="experience-layout">
+    <div class="experience-visual reveal">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Fine Dining Ambiance" class="experience-img-main" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&q=80" alt="Gourmet Dish" class="experience-img-float" loading="lazy">
+      <div class="experience-stats">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+    </div>
+    <div class="experience-text">
+      <span class="section-tag reveal">The Surbhi Experience</span>
+      <h2 class="section-title reveal reveal-delay-1">A Symphony of <em>Flavour</em> & Elegance</h2>
+      <div class="gold-divider reveal reveal-delay-2"></div>
+      <p class="section-desc reveal reveal-delay-2">Step into a world where every detail is curated for your pleasure — from the ambient lighting to the handcrafted table settings, every moment at Surbhi is designed to be extraordinary.</p>
+      <div class="experience-features">
+        <div class="exp-feature reveal reveal-delay-1">
+          <div class="exp-feature-icon">&#9733;</div>
+          <div>
+            <h4>Master Chefs</h4>
+            <p>Award-winning culinary artists crafting each dish with passion.</p>
+          </div>
+        </div>
+        <div class="exp-feature reveal reveal-delay-2">
+          <div class="exp-feature-icon">&#9832;</div>
+          <div>
+            <h4>Premium Ingredients</h4>
+            <p>Sourced from the finest farms and markets across the world.</p>
+          </div>
+        </div>
+        <div class="exp-feature reveal reveal-delay-3">
+          <div class="exp-feature-icon">&#9834;</div>
+          <div>
+            <h4>Live Music</h4>
+            <p>Soft melodies every evening to complement your dining journey.</p>
+          </div>
+        </div>
+        <div class="exp-feature reveal reveal-delay-4">
+          <div class="exp-feature-icon">&#9827;</div>
+          <div>
+            <h4>Private Dining</h4>
+            <p>Exclusive rooms for intimate celebrations and corporate events.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <span class="section-tag">Visual Journey</span>
+    <h2 class="section-title">Our Premium <em>Gallery</em></h2>
+    <div class="gold-divider"></div>
+    <p class="section-desc">A glimpse into the world of Surbhi — where artistry meets appetite and every frame tells a story of culinary excellence.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant Interior" loading="lazy">
+      <div class="gallery-overlay">
+        <span>The Grand Hall</span>
+        <div class="gallery-zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Gourmet Plate" loading="lazy">
+      <div class="gallery-overlay">
+        <span>Artful Plating</span>
+        <div class="gallery-zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Bar Area" loading="lazy">
+      <div class="gallery-overlay">
+        <span>The Lounge Bar</span>
+        <div class="gallery-zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1482275548304-a58859dc4501?w=600&q=80" alt="Dining Setup" loading="lazy">
+      <div class="gallery-overlay">
+        <span>Private Dining</span>
+        <div class="gallery-zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3">
+      <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80" alt="Dessert" loading="lazy">
+      <div class="gallery-overlay">
+        <span>Sweet Indulgence</span>
+        <div class="gallery-zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header reveal">
+    <span class="section-tag">Guest Experiences</span>
+    <h2 class="section-title">What Our <em>Guests</em> Say</h2>
+    <div class="gold-divider"></div>
+    <p class="section-desc">The stories of our guests are the greatest compliment to our craft — each review a testament to the Surbhi experience.</p>
+  </div>
+  <div class="reviews-track">
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-quote">&ldquo;</div>
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">An absolutely divine experience. The ambiance, the service, the food — everything was beyond perfection. Surbhi has redefined what fine dining means to us.</p>
+      <div class="review-author">
+        <div class="review-avatar">A</div>
+        <div class="review-author-info">
+          <h5>Ananya Sharma</h5>
+          <span>Food Critic, Delhi</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-quote">&ldquo;</div>
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">We celebrated our anniversary here and it was magical. The private dining room, the personalized menu, the attention to detail — truly a world-class establishment.</p>
+      <div class="review-author">
+        <div class="review-avatar">R</div>
+        <div class="review-author-info">
+          <h5>Rahul & Priya Mehta</h5>
+          <span>Anniversary Celebration</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-3">
+      <div class="review-quote">&ldquo;</div>
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">The Saffron Biryani Royale alone is worth the visit. Every bite is a revelation. Surbhi is not just a restaurant — it's a destination for anyone who loves exceptional food.</p>
+      <div class="review-author">
+        <div class="review-avatar">V</div>
+        <div class="review-author-info">
+          <h5>Vikram Singh</h5>
+          <span>Culinary Blogger</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation" id="reservation">
+  <div class="reservation-layout">
+    <div class="reservation-text">
+      <span class="section-tag reveal">Book Your Table</span>
+      <h2 class="section-title reveal reveal-delay-1">Reserve Your <em>Experience</em></h2>
+      <div class="gold-divider reveal reveal-delay-2"></div>
+      <p class="section-desc reveal reveal-delay-2">Secure your place at Surbhi and prepare for an evening of culinary excellence. For immediate assistance, reach us on WhatsApp.</p>
+      <div class="reveal reveal-delay-3">
+        <div class="reservation-info-item">
+          <div class="reservation-info-icon">&#9201;</div>
+          <p><strong>Opening Hours</strong><br>Mon - Sun: 12:00 PM - 11:30 PM</p>
+        </div>
+        <div class="reservation-info-item">
+          <div class="reservation-info-icon">&#9742;</div>
+          <p><strong>Call Us</strong><br>+91 98765 43210</p>
+        </div>
+        <div class="reservation-info-item">
+          <div class="reservation-info-icon">&#9993;</div>
+          <p><strong>Email</strong><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aad8cfd9cfd8dccfead9dfd8c8c2c3c9cbcccf84c9c5c7">[email&#160;protected]</a></p>
+        </div>
+      </div>
+      <a href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20reserve%20a%20table%20at%20Surbhi%20Cafe%20%26%20Restaurant." class="whatsapp-btn reveal reveal-delay-4" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reserve via WhatsApp
+      </a>
+    </div>
+    <div class="reservation-form reveal reveal-delay-2">
+      <h3 class="form-title">Make a Reservation</h3>
+      <form id="reservationForm" onsubmit="return handleReservation(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resName">Full Name</label>
+            <input type="text" id="resName" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="resPhone">Phone</label>
+            <input type="tel" id="resPhone" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resDate">Date</label>
+            <input type="date" id="resDate" required>
+          </div>
+          <div class="form-group">
+            <label for="resTime">Time</label>
+            <input type="time" id="resTime" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resGuests">Guests</label>
+            <select id="resGuests" required>
+              <option value="">Select</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6+ Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="resOccasion">Occasion</label>
+            <select id="resOccasion">
+              <option value="">Select</option>
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+              <option value="business">Business Dinner</option>
+              <option value="date">Date Night</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="resNotes">Special Requests</label>
+          <textarea id="resNotes" placeholder="Any dietary requirements or preferences..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & FOOTER -->
+<footer class="contact" id="contact">
+  <div class="contact-layout">
+    <div class="contact-brand reveal">
+      <a href="#" class="nav-logo">Surbhi<span>Cafe & Restaurant</span></a>
+      <p>Where culinary artistry meets timeless elegance. Every visit is an experience, every dish a masterpiece crafted for the most discerning palates.</p>
+      <div class="contact-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Twitter">X</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+    <div class="contact-col reveal reveal-delay-1">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#specials">Our Menu</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reservation">Reservations</a></li>
+      </ul>
+    </div>
+    <div class="contact-col reveal reveal-delay-2">
+      <h4>Hours</h4>
+      <p>
+        <strong style="color:var(--ivory)">Monday - Friday</strong><br>
+        12:00 PM - 11:30 PM<br><br>
+        <strong style="color:var(--ivory)">Saturday - Sunday</strong><br>
+        11:00 AM - 12:00 AM<br><br>
+        <strong style="color:var(--ivory)">Happy Hours</strong><br>
+        4:00 PM - 7:00 PM Daily
+      </p>
+    </div>
+    <div class="contact-col reveal reveal-delay-3">
+      <h4>Location</h4>
+      <p>
+        Surbhi Cafe & Restaurant<br>
+        42, MG Road, Central Avenue<br>
+        Near City Center Mall<br>
+        New Delhi, 110001<br><br>
+        <strong style="color:var(--ivory)">+91 98765 43210</strong><br>
+        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e597809680979380a5969097878d8c86848380cb868a88">[email&#160;protected]</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Surbhi Cafe & Restaurant. All rights reserved.</p>
+    <p>Crafted with excellence by <a href="#">Surbhi Group</a></p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// === PRELOADER ===
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hidden');
+  }, 1200);
+});
+
+// === NAVBAR SCROLL ===
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 80) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+}, { passive: true });
+
+// === MOBILE MENU ===
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'mobile-menu';
+mobileMenu.innerHTML = `
+  <button class="mobile-close" aria-label="Close menu">&times;</button>
+  <a href="#home">Home</a>
+  <a href="#specials">Specials</a>
+  <a href="#experience">Experience</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#reservation">Reserve</a>
+  <a href="#contact">Contact</a>
+`;
+document.body.appendChild(mobileMenu);
+
+hamburger.addEventListener('click', () => mobileMenu.classList.add('active'));
+mobileMenu.querySelector('.mobile-close').addEventListener('click', () => mobileMenu.classList.remove('active'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('active')));
+
+// === HERO PARTICLES ===
+const particlesContainer = document.getElementById('heroParticles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.top = (60 + Math.random() * 40) + '%';
+  p.style.animationDuration = (6 + Math.random() * 10) + 's';
+  p.style.animationDelay = Math.random() * 8 + 's';
+  p.style.width = (1 + Math.random() * 2) + 'px';
+  p.style.height = p.style.width;
+  particlesContainer.appendChild(p);
+}
+
+// === SCROLL REVEAL ===
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// === SMOOTH SCROLL ===
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// === RESERVATION FORM ===
+function handleReservation(e) {
+  e.preventDefault();
+  const name = document.getElementById('resName').value;
+  const phone = document.getElementById('resPhone').value;
+  const date = document.getElementById('resDate').value;
+  const time = document.getElementById('resTime').value;
+  const guests = document.getElementById('resGuests').value;
+  const occasion = document.getElementById('resOccasion').value;
+  const notes = document.getElementById('resNotes').value;
+
+  const message = `Hello Surbhi Cafe & Restaurant!%0A%0AI would like to reserve a table:%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ADate: ${date}%0ATime: ${time}%0AGuests: ${guests}%0AOccasion: ${encodeURIComponent(occasion || 'N/A')}%0ASpecial Requests: ${encodeURIComponent(notes || 'None')}`;
+
+  window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+  return false;
+}
+
+// === MENU CARD TILT EFFECT ===
+document.querySelectorAll('.menu-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 30;
+    const rotateY = (centerX - x) / 30;
+    card.style.transform = `translateY(-8px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// === PARALLAX ON HERO ===
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const heroBg = document.querySelector('.hero-bg-image');
+  if (heroBg && scrolled < window.innerHeight) {
+    heroBg.style.transform = `scale(${1 + scrolled * 0.0001}) translateY(${scrolled * 0.3}px)`;
+  }
+}, { passive: true });
+
+// === COUNTER ANIMATION ===
+const statNumbers = document.querySelectorAll('.stat-number');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.textContent;
+      const num = parseInt(text);
+      if (!isNaN(num) && !el.dataset.counted) {
+        el.dataset.counted = 'true';
+        const suffix = text.replace(/[0-9]/g, '');
+        let current = 0;
+        const step = Math.ceil(num / 40);
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= num) {
+            current = num;
+            clearInterval(interval);
+          }
+          el.textContent = current + suffix;
+        }, 40);
+      }
+    }
+  });
+}, { threshold: 0.5 });
+statNumbers.forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
